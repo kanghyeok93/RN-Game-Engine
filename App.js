@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { View, Modal } from "react-native";
 import CloseButton from "./app/table-of-contents/closeButton";
 import EStyleSheet from "react-native-extended-stylesheet";
-import { GestureHandlerRootView } from 'react-native-gesture-handler'
+import { GestureHandlerRootView } from "react-native-gesture-handler";
 
 import TableOfContents from "./app/table-of-contents";
 import TouchChapter from "./app/touch-events";
@@ -22,27 +22,27 @@ export default class App extends Component {
     super(props);
     this.state = {
       sceneVisible: false,
-      scene: null
+      scene: null,
     };
   }
 
-  mountScene = scene => {
+  mountScene = (scene) => {
     this.setState({
       sceneVisible: true,
-      scene: scene
+      scene: scene,
     });
   };
 
   unMountScene = () => {
     this.setState({
       sceneVisible: false,
-      scene: null
+      scene: null,
     });
   };
 
   render() {
     return (
-      <GestureHandlerRootView style={{ flex: 1 }}> 
+      <GestureHandlerRootView style={{ flex: 1 }}>
         <View style={{ flex: 1 }}>
           <TableOfContents
             sceneVisible={this.state.sceneVisible}
@@ -51,17 +51,17 @@ export default class App extends Component {
               items: [
                 TouchChapter(this.mountScene),
                 PhysicsChapter(this.mountScene),
-                ////SensorsChapter(this.mountScene),
+                ////SensorsChapter(this.mountScene), node_module 패키지 문제로 인하여 공식 사이트에서 주석 처리
                 OpenGLChapter(this.mountScene),
-                ExamplesChapter(this.mountScene)
-              ]
+                ExamplesChapter(this.mountScene),
+              ],
             }}
           />
           <Modal
             animationType={"slide"}
             transparent={false}
             visible={this.state.sceneVisible}
-            onRequestClose={_ => {}}
+            onRequestClose={(_) => {}}
           >
             {this.state.scene}
 
